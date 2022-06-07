@@ -19,6 +19,11 @@ artist_repository.save(artist_2)
 album_1 = Album("Its a kind of Magic", "Rock", artist_1)
 album_repository.save(album_1)
 
-# result = artist_repository.select(18)
+# queen_id = artist_1.id
+# res = artist_repository.select(queen_id)
+
+artist_list = artist_repository.select_all()
+album_list = album_repository.select_all()
+# artist_1_name = artist_repository.select()
 
 pdb.set_trace()
