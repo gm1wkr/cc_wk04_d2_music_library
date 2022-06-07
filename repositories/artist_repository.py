@@ -24,6 +24,17 @@ def select(id):
     return artist
 
 
+
+def select_artist_by_name(artists_name):
+    sql = "SELECT * FROM artists WHERE name = %s"
+    values = [artists_name]
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        artist = Artist(result['name'], result['id'])
+    
+    return artist
+
+
 def save(artist):
     sql = "INSERT INTO artists (name) VALUES (%s) RETURNING id"
     values = [artist.name]
@@ -33,10 +44,9 @@ def save(artist):
 
     return artist
 
-
-def update(artist):
-    sql = "UPDATE artists SET (name) = (%s) WHERE id = %s"
-    values = [artist.name]
+def update(artist, new_name):
+    sql = "UPDATE artists SET name = %s WHERE id = %s"
+    values = [new_name, artist.id]
     run_sql(sql, values)
 
 

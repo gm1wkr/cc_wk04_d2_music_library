@@ -19,11 +19,23 @@ artist_repository.save(artist_2)
 album_1 = Album("Its a kind of Magic", "Rock", artist_1)
 album_repository.save(album_1)
 
+album_2 = Album("Sheer Heart Attack", "Rock", artist_1)
+album_repository.save(album_2)
+
+album_3 = Album("News of the World", "Rock", artist_1)
+album_repository.save(album_3)
+
 # queen_id = artist_1.id
 # res = artist_repository.select(queen_id)
 
 artist_list = artist_repository.select_all()
-album_list = album_repository.select_all()[0]
-is_queen = album_repository.select(album_list.id)
+album_list = album_repository.select_all()
+is_queen = album_repository.select(album_list[2].id)
+
+all_queen = album_repository.select_all_by_artist(artist_1)
+
+bob = artist_repository.select_artist_by_name("Bob Dillan")
+artist_repository.update(bob, "Bobby D")
+bob_2 = artist_repository.select_artist_by_name("Bobby D")
 
 pdb.set_trace()
