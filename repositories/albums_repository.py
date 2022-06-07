@@ -1,3 +1,4 @@
+from unittest import result
 from db.run_sql import run_sql
 
 from models.album import Album
@@ -21,7 +22,21 @@ def select_all():
 
 
 def select(id):
-    pass
+    album = []
+    sql = "SELECT * FROM albums WHERE id = '%s'"
+    value = [id]
+    result = run_sql(sql, value)[0]
+    if result is not None:
+        artist_id = row['artist_id']
+        artist = artist_repository.select(artist_id)
+        album = Album(
+            result['title'],
+            result['genre'],
+            artist
+        )
+    return album
+
+
 
 
 def save(album):
