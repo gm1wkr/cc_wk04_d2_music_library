@@ -14,7 +14,8 @@ def select_all():
         album = Album(
             row['title'],
             row['genre'],
-            artist
+            artist,
+            row['id']
         )
         albums.append(album)
     
@@ -27,12 +28,13 @@ def select(id):
     value = [id]
     result = run_sql(sql, value)[0]
     if result is not None:
-        artist_id = row['artist_id']
+        artist_id = result['artist_id']
         artist = artist_repository.select(artist_id)
         album = Album(
             result['title'],
             result['genre'],
-            artist
+            artist,
+            result['id']
         )
     return album
 

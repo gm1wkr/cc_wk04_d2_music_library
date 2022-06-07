@@ -6,8 +6,8 @@ from models.artist import Artist
 import repositories.artist_repository as artist_repository
 import repositories.albums_repository as album_repository
 
-artist_repository.delete_all()
 album_repository.delete_all()
+artist_repository.delete_all()
 
 
 artist_1 = Artist("Queen")
@@ -23,7 +23,7 @@ album_repository.save(album_1)
 # res = artist_repository.select(queen_id)
 
 artist_list = artist_repository.select_all()
-album_list = album_repository.select_all()
-# artist_1_name = artist_repository.select()
+album_list = album_repository.select_all()[0]
+is_queen = album_repository.select(album_list.id)
 
 pdb.set_trace()
