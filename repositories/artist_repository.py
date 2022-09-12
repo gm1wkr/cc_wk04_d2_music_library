@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 
 from models.artist import Artist
 
+
 def select_all():
     artists = []
     sql = "SELECT * FROM artists"
